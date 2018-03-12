@@ -1,0 +1,35 @@
+{% extends "./_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{{ form.certifications.errors }}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center">データ入力</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="float-right">
+                <a class="btn btn-outline-secondary" href="{% url 'index' %}">戻る</a>
+                <a class="btn btn-outline-secondary save" href="#">保存</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form method="post" id="myform">
+                {%crispy form%}
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="float-right">
+                <a class="btn btn-outline-secondary" href="{% url 'index' %}">戻る</a>
+                <a class="btn btn-outline-secondary save" href="#">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

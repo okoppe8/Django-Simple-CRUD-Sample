@@ -1,0 +1,40 @@
+{% load item_extras %}
+<ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">&laquo;</a>
+    </li>
+    {% else %}
+    <li class="disabled page-item">
+        <span class="page-link">&laquo;</span>
+    </li>
+    {% endif %}
+    {% for page in page_obj.pages %}
+    {% if page %}
+    {% ifequal page page_obj.number %}
+    <li class="active page-item">
+        <span class="page-link">{{ page }}
+            <span class="page-link sr-only">(current)</span>
+        </span>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link" href="?{% url_replace request 'page' page %}">{{ page }}</a>
+    </li>
+    {% endifequal %}
+    {% else %}
+    <li class="page-item">
+            <a class="page-link">…</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="?{% url_replace request 'page' page_obj.next_page_number %}">&raquo;</a>
+    </li>
+    {% else %}
+    <li class="disabled page-item">
+        <span class="page-link">&raquo;</span>
+    </li>
+    {% endif %}
+</ul>
