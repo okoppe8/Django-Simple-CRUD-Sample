@@ -130,5 +130,5 @@ PAGINATION_SETTINGS = {
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
 
-LOGIN_URL='admin/login/'
+LOGIN_URL='/admin/login/'
 LOGOUT_REDIRECT_URL='/'
