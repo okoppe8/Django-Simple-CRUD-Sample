@@ -1,22 +1,26 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django_filters.views import FilterView
-
 from pure_pagination.mixins import PaginationMixin
-from .models import Item
+
 from .filters import ItemFilter
 from .forms import ItemForm
+from .models import Item
 
 
 # Create your views here.
 # 検索一覧画面
 class ItemFilterView(LoginRequiredMixin, PaginationMixin, FilterView):
     model = Item
-    filterset_class = ItemFilter
+
     # デフォルトの並び順を新しい順とする
     queryset = Item.objects.all().order_by('-created_at')
+
+    # django-filter用設定
+    filterset_class = ItemFilter
+    strict = False
 
     # pure_pagination用設定
     paginate_by = 3

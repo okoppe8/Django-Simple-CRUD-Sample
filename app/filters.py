@@ -1,5 +1,6 @@
-from django_filters import filters
 from django_filters import FilterSet
+from django_filters import filters
+
 from .models import Item
 
 
@@ -9,11 +10,11 @@ class MyOrderingFilter(filters.OrderingFilter):
 
 class ItemFilter(FilterSet):
 
-    name = filters.CharFilter(name='name', label='氏名', lookup_expr='contains')
-    memo = filters.CharFilter(name='memo', label='備考', lookup_expr='contains')
+    name = filters.CharFilter(label='氏名', lookup_expr='contains')
+    memo = filters.CharFilter(label='備考', lookup_expr='contains')
 
     order_by = MyOrderingFilter(
-        # tuple-mapping retains order
+
         fields=(
             ('name', 'name'),
             ('age', 'age'),
@@ -26,6 +27,5 @@ class ItemFilter(FilterSet):
     )
 
     class Meta:
-
         model = Item
         fields = ('name', 'sex', 'memo',)
