@@ -16,7 +16,8 @@ class Item(models.Model):
     age = models.IntegerField(
         verbose_name='年齢',
         validators=[validators.MinValueValidator(1)],
-        blank=True
+        blank=True,
+        null=True,
     )
     sex = models.IntegerField(
         verbose_name='性別',
@@ -26,7 +27,8 @@ class Item(models.Model):
     memo = models.TextField(
         verbose_name='備考',
         max_length=300,
-        blank=True
+        blank=True,
+        null=True,
     )
     created_at = models.DateTimeField(
         verbose_name='登録日',

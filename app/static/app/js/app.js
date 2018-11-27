@@ -16,3 +16,7 @@ $.each(conditions, function(){
         $('.filtered').css('visibility','visible')
     }
 })
+
+// ページネーションのレスポンシブ対応
+// https://auxiliary.github.io/rpage/
+$(".pagination").rPage();

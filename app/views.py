@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django_filters.views import FilterView
-from pure_pagination.mixins import PaginationMixin
 
 from .filters import ItemFilter
 from .forms import ItemForm
@@ -12,7 +11,7 @@ from .models import Item
 
 # Create your views here.
 # 検索一覧画面
-class ItemFilterView(LoginRequiredMixin, PaginationMixin, FilterView):
+class ItemFilterView(LoginRequiredMixin, FilterView):
     model = Item
 
     # デフォルトの並び順を新しい順とする
@@ -22,9 +21,8 @@ class ItemFilterView(LoginRequiredMixin, PaginationMixin, FilterView):
     filterset_class = ItemFilter
     strict = False
 
-    # pure_pagination用設定
-    paginate_by = 3
-    object = Item
+    # 1ページあたりの表示件数
+    paginate_by = 10
 
     # 検索条件をセッションに保存する
     def get(self, request, **kwargs):
