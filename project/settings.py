@@ -127,3 +127,9 @@ LOGIN_URL='admin:login'
 LOGOUT_REDIRECT_URL='/'
 
 AUTH_USER_MODEL = 'app.User'
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
