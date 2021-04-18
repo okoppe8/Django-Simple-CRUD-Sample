@@ -125,3 +125,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL='admin:login'
 LOGOUT_REDIRECT_URL='/'
+
+AUTH_USER_MODEL = 'app.User'
